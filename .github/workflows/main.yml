@@ -24,6 +24,7 @@ jobs:
       - name: Create Cloud Storage Bucket
         run: |
           # Criamos um nome único usando o ID do Run do GitHub para evitar erro de nome já existente
-          BUCKET_NAME="bucket-lab-jairo-${{ github.run_id }}"
-          echo "Criando bucket: $BUCKET_NAME"
-          gcloud storage buckets create gs://$BUCKET_NAME --location=us-central1
+          #BUCKET_NAME="bucket-lab-jairo-${{ github.run_id }}"
+          #echo "Criando bucket: $BUCKET_NAME"
+          #gcloud storage buckets create gs://$BUCKET_NAME --location=us-central1
+          echo "TESTE SUCESSO 11111"
