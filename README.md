@@ -9,3 +9,5 @@ GitHub Actions: Esteira de CI/CD para automação.
 Workload Identity Federation (WIF): Método de autenticação segura via OIDC.
 
 Terraform (Opcional): Gerenciamento de infraestrutura.
+
+---> Novo teste
