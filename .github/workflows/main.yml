@@ -21,8 +21,8 @@ jobs:
         uses: google-github-actions/auth@v2
         with:
           # Verifique se estes nomes batem com os nomes que você criou no Passo 2
-          workload_identity_provider: ${{ secrets.GCP_WIF_PROVIDER }}
-          service_account: ${{ secrets.GCP_SA_EMAIL }}
+          workload_identity_provider: projects/633928882796/locations/global/workloadIdentityPools/teste-pratico-pool/providers/teste-pratico-provider
+          service_account: github-actions-sa@gcp-lab-python.iam.gserviceaccount.com
 
       - name: Testar Conexao com GCloud
         run: |
