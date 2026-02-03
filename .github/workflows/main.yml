@@ -20,6 +20,7 @@ jobs:
         with:
           workload_identity_provider: ${{ secrets.GCP_WIF_PROVIDER }}
           service_account: ${{ secrets.GCP_SA_EMAIL }}
+          token_format: 'access_token' # Adicione esta linha
 
       - name: Create Cloud Storage Bucket
         run: |
