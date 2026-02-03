@@ -1,20 +1,30 @@
 name: Teste de Conexao GCP
-on: [push]
+
+on:
+  push:
+    branches: [ "main" ]
+
+# ESTE BLOCO É OBRIGATÓRIO PARA O WIF
+permissions:
+  id-token: write  # Permite que o GitHub peça o token ao Google
+  contents: read   # Permite que o GitHub leia o código
 
 jobs:
-  check-auth:
+  auth-test:
     runs-on: ubuntu-latest
-    permissions:
-      id-token: 'write' # Isso permite que o GitHub peça um token ao Google
-      contents: 'read'
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout Code
+        uses: actions/checkout@v4
 
-      - name: Autenticando no Google
+      - name: Authenticate to Google Cloud
+        id: auth
         uses: google-github-actions/auth@v2
         with:
+          # Verifique se estes nomes batem com os nomes que você criou no Passo 2
           workload_identity_provider: ${{ secrets.GCP_WIF_PROVIDER }}
           service_account: ${{ secrets.GCP_SA_EMAIL }}
 
-      - name: Teste de Comando GCloud
-        run: gcloud auth list # Se isso listar a Service Account, funcionou!
+      - name: Testar Conexao com GCloud
+        run: |
+          gcloud auth list
+          gcloud compute networks list --project=gcp-lab-python
